@@ -1,0 +1,21 @@
+﻿<form role="form">
+    <div class="box-body">
+        <div class="form-group">
+           <label for="Email">Login Email:</label>
+            <input type="text" class="form-control" ng-model="accountModelStep2.LoginEmail" placeholder="Login Email" />
+        </div>
+        <div class="form-group">
+            <label for="Password">Password:</label>
+            <input type="password" id ="Password" class="form-control" ng-model="accountModelStep2.Password" placeholder="Password" />
+        </div>
+        <div class="form-group">
+            <label for="Confirm">Confirm Password:</label>
+            <input type="password" id ="Pasword" class="form-control" ng-model="accountModelStep2.PasswordConfirm" placeholder="Confirm Password" />
+        </div>
+        <hr />
+        <div>
+            <a href="#" class="btn btn-info" ng-click="previous()">Previous</a>
+            <a href="#" class="btn btn-info" ng-click="confirm()">Next</a>
+        </div>
+    </div>
+</form>

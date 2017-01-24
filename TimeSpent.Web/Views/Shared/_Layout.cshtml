@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Time Spent </title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @*<link href="~/Content/loading-placeholder.css" rel="stylesheet" media="screen">
+    <link href="~/Content/Layout.css" rel="stylesheet" media="screen">*@
+    <meta name="viewport" content="width=device-width" />
+   
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/dist/css/skins/_all-skins.min.css">
+   
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="~/Content/Site.css">
+
+    @RenderSection("head", required: false)
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini" ng-app="appMain">
+    @*@Html.Partial("~/Views/Shared/_TopBar.cshtml")*@
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="@Url.Content("~")" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>T</b>SP</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Time</b>Spent</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @{
+                                    var username = "";
+                                    if (Request.IsAuthenticated)
+                                    {
+                                        username = HttpContext.Current.User.Identity.Name;
+                                    }
+                                }
+                                <span class="fa fa-user hidden-xs"></span>@username
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                    <div class="pull-left">
+                                        <a href="@Url.Action("ChangePassword","Account")" class="btn btn-default btn-flat">Change Password</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="@Url.Action("Logout", "Account")" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                    <div class="pull-left">
+                                        <a href="@Url.Action("MyAccount", "User")" class="btn btn-default btn-flat">My Account</a>
+                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="pull-left">
+                                            <a href="@Url.Action("Login", "Account")" class="btn btn-default btn-flat">Login</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="@Url.Action("Register", "Account")" class="btn btn-default btn-flat">Register</a>
+                                        </div>
+
+                                    }
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">Time Spent Actions</li>
+                  
+                    <li>
+                        <a href="@Url.Action("Index", "Category")">
+                            <i class="fa fa-folder"></i> <span>Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Project")">
+                            <i class="fa fa-folder"></i> <span>Project</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "TimeEntry")">
+                            <i class="fa fa-table"></i> <span>TimeEntry</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Content("~")">
+                            <i class="fa fa-calendar"></i> <span>Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+    </div>
+
+    @Html.Partial("~/Views/Shared/BottomBar.cshtml");
+
+    @RenderSection("modals", required: false)
+
+    <script type="text/javascript">
+        window.TimeSpent = {};
+        (function (ts) {
+            var rootPath ;
+            ts.rootPath = rootPath;
+        }(window.TimeSpent));
+        TimeSpent.rootPath = '@Url.Content("~")';
+
+    </script>
+
+    @Scripts.Render("~/bundles/modernizr")
+    
+    <!-- jQuery 2.2.3 -->
+    <script src="~/Content/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    @*<script>
+    $.widget.bridge('uibutton', $.ui.button);
+      </script>*@
+    <!-- Bootstrap 3.3.6 -->
+    <script src="~/Content/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="~/Content/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="~/Content/AdminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="~/Content/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="~/Content/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Content/AdminLTE/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/AdminLTE/dist/js/app.min.js"></script>
+    
+    <script src="~/Scripts/moment.js" type="text/javascript"></script>
+    <script src="~/Scripts/angular.js" type="text/javascript"></script>
+    <script src="~/Scripts/angular-route.js" type="text/javascript"></script>
+    <script src="~/Scripts/angular-animate.js" type="text/javascript"></script>
+
+   
+
+    @Scripts.Render("~/bundles/datatable")
+
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+ 
+    <script src="@Url.Content("~/Scripts/App.js")" type="text/javascript"></script>
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        @RenderSection("footerScript", required: false);        // raw javascript section
+    </script>
+</body>
+</html>

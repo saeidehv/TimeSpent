@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section scripts
+{
+    @*<script src="~/Scripts/d3.min.js"></script>*@
+    <script  src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.11/d3.js"></script>
+    <script src="~/Scripts/angular-charts.min.js"></script>
+    <script src="~/Binding/ViewModels/DashboardViewModel.js"></script>
+    <link rel="stylesheet" href="~/Content/Site.css">
+}
+
+@section footerScript
+{
+    angular.bootstrap(document.getElementById("dashboardDiv"),['dashboard']);
+}
+
+<section class="content" id="mainbody">
+    <div ng-app="dashboard" ng-controller="DashboardViewModel" id="dashboardDiv">
+        <div class="row">
+            <b>Chart type: </b>
+            <select ng-model='chartType' class='input'>
+                <option value="bar">Bar</option>
+                <option value="line">Line</option>
+                <option value="area">Area</option>
+                
+            </select>
+         </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <div data-ac-chart="chartType"
+                     data-ac-data="dataProjectCategoryReport"
+                     data-ac-config="configProjectCategory"
+                     class="chart" >
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div data-ac-chart="'pie'"
+                     data-ac-data="dataProjectReport"
+                     data-ac-config="configProject"
+                     class="chart">
+                </div>
+            </div>
+        </div>
+       
+
+    </div>
+</section>
+
+ 

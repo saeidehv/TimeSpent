@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Time Entry";
+    ViewBag.Name = "TimeEntry";
+}
+@section scripts
+{
+
+    <script src="@Url.Content("~/Binding/Models/TimeEntryModel.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Binding/ViewModels/TimeEntryViewModel.js")" type="text/javascript"></script>
+}
+@section footerScript
+{
+    angular.bootstrap(document.getElementById("timeEntryDiv"),['timeEntry']);
+}
+
+<section class="content-header">
+    <h1>
+        Time Entry List
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Content("~")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Time Entry List</li>
+    </ol>
+</section>
+
+<section class="content" id="mainbody">
+    <div class="row" id="addEntryButton">
+        <a class="btn btn-primary pull-right" href="@Url.Action("AddEntry", "TimeEntry")">Add Time Entry</a>
+    </div>
+    <div data-ng-app="timeEntry" id="timeEntryDiv" data-ng-controller="TimeEntryViewModel" ng-cloak>
+        @Html.Partial("~/Views/Shared/_ValidationErrors.cshtml")
+
+        <div ng-view></div>
+    </div>
+</section>
+
+

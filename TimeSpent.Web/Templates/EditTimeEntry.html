@@ -1,0 +1,58 @@
+﻿<!-- Content Header (Page header) -->
+ <!-- Main content -->
+<!--<section class="content" id="mainbody">ng-controller="EditTimeEntryViewModel" -->
+    <div class="box box-primary col-md-9"   ng-cloak>
+
+        <form role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="Name">Description</label>
+                        <input type="text" class="form-control" id="Name" ng-model="timeEntryModel.Description" placeholder="Enter Description">
+                    </div>
+                    <div class="form-group">
+                        <label for="Duration">Duration</label>
+                        <input type="text" class="form-control" id="Description" ng-model="timeEntryModel.Duration" placeholder="Duration">
+                    </div>
+
+                    <p class="form-group">
+                        <label for="Name">Category</label>
+                        <select class="form-control" name="categorySelect" id="categorySelect" ng-model="timeEntryModel.CategoryId">
+                            <option ng-selected="{{timeEntryModel.CategoryId == item.CategoryId}}" ng-repeat="item in catList" value="{{item.CategoryId}}">{{item.Name}}</option>
+                        </select>
+                    </p>
+                    <p class="form-group">
+                        <label for="Name">Project</label>
+                        <select class="form-control" name="projectSelect" id="projectSelect" ng-model="timeEntryModel.ProjectId">
+                            <option ng-selected="{{timeEntryModel.ProjectId == p.ProjectId}}" ng-repeat="p in projects" value="{{p.ProjectId}}">{{p.Name}}</option>
+                        </select>
+
+                    </p>
+
+                    <div class="form-group">
+                        <label for="Name">Date</label>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p class="input-group">
+                                    <input type="text" ng-model="timeEntryModel.Date" class="form-control"
+                                           datepicker-popup="MM/dd/yyyy" is-open="openedEntry" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                            <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-info" ng-click="submit()">Save</button>
+                        <button type="button" class="btn btn-info" ng-click="previous()">Cancel</button>
+                    </div>
+
+
+                        </div>
+                    </div>
+        </form>
+    </div>
+<!--</section>-->

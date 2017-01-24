@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{79D65DB3-FC0B-47A8-981F-7515373EB1A9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TimeSpent.ServiceHost.Console</RootNamespace>
+    <AssemblyName>TimeSpent.ServiceHost.Console</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Discovery" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimeSpent.Business.Bootstrapper\TimeSpent.Business.Bootstrapper.csproj">
+      <Project>{8bac0920-bb85-42fd-9cc2-90074e5fbaee}</Project>
+      <Name>TimeSpent.Business.Bootstrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpent.Business.Common\TimeSpent.Business.Common.csproj">
+      <Project>{6d00b9c0-1e4f-44ad-a2b8-6ac469529063}</Project>
+      <Name>TimeSpent.Business.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpent.Business.Contracts\TimeSpent.Business.Contracts.csproj">
+      <Project>{b4661732-1290-4a16-83a8-37c3f266453f}</Project>
+      <Name>TimeSpent.Business.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpent.Business.Managers\TimeSpent.Business.Managers.csproj">
+      <Project>{f846a999-a742-48d8-ba34-676b21157b65}</Project>
+      <Name>TimeSpent.Business.Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpent.Business\TimeSpent.Business.csproj">
+      <Project>{17acdcd9-b263-4328-ae6e-d86f34404eab}</Project>
+      <Name>TimeSpent.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpent.Common\TimeSpent.Common.csproj">
+      <Project>{9d821b31-00d4-47e7-9c67-a62129febe84}</Project>
+      <Name>TimeSpent.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpent.Core\TimeSpent.Core.csproj">
+      <Project>{559d568e-4e6a-4dcc-bc50-38331b719764}</Project>
+      <Name>TimeSpent.Core</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpent.Data.Contracts\TimeSpent.Data.Contracts.csproj">
+      <Project>{621a07f8-7430-400d-8788-b3865a4a36d1}</Project>
+      <Name>TimeSpent.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSpent.Data\TimeSpent.Data\TimeSpent.Data.csproj">
+      <Project>{1a3199a9-2287-4687-aeaf-1750550992d1}</Project>
+      <Name>TimeSpent.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

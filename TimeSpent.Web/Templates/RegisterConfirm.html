@@ -1,0 +1,41 @@
+﻿<form role="form">
+   <div class="box-body">
+    <div class="form-group">
+        <label for="FirstName">First Name:</label>
+        <input type="text" class="form-control" disabled value="{{accountModelStep1.FirstName}}" />
+        <!--<span class="input-group-addon">First Name:</span>
+        <span class="form-control">{{accountModelStep1.FirstName}}</span>-->
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name:</label>
+        <input type="text" class="form-control" disabled value="{{accountModelStep1.LastName}}" />
+        <!--<span id="LastName">{{accountModelStep1.LastName}}</span>-->
+    </div>
+    <div class="form-group">
+        <label for="Address" >Address:</label>
+        <input type="text" class="form-control" disabled value="{{accountModelStep1.Address}}" />
+      <!--  <span id="Address">{{accountModelStep1.Address}}</span>-->
+    </div>
+    <!--<div class="form-group">
+        <span class="input-group-addon">City:</span>
+        <span>{{accountModelStep1.City}}</span>
+    </div>
+    <div class="form-group">
+        <span class="input-group-addon">State:</span>
+        <span>{{accountModelStep1.State}}</span>
+    </div>
+    <div class="form-group">
+        <span class="input-group-addon">Zip Code:</span>
+        <span>{{accountModelStep1.Zip Code}}</span>
+    </div>-->
+    <div class="form-group">
+        <label for="Email">Login Email:</label>
+        <input type="text" class="form-control" disabled value="{{accountModelStep2.LoginEmail}}" />
+       <!-- <span id="Email">{{accountModelStep2.LoginEmail}}</span>-->
+    </div>
+    <hr />
+    <a href="#" class="btn btn-info" ng-click="previous()">Previous</a>
+    <a href="#" class="btn btn-info" ng-click="createAccount()">Create Account</a>
+
+</div>
+</form>
